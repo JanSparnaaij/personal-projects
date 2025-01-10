@@ -1,18 +1,20 @@
 from playwright.sync_api import sync_playwright
 
-def fetch_all_matches():
-    url = "https://www.oddsportal.com/soccer/netherlands/eredivisie/"
+def fetch_all_matches(url):
+    """
+    Fetch details and odds for all matches on the page.
+    Args:
+        url (str): URL of the league page.
 
+    Returns:
+        list: List of dictionaries containing match details (team names, odds).
+    """
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
-        print("Navigating to the page...")
+        print(f"Navigating to the page: {url}")
         page.goto(url)
-
-        # Save the HTML content for debugging
-        with open("debug.html", "w", encoding="utf-8") as f:
-            f.write(page.content())
 
         try:
             page.wait_for_selector('div[data-v-b8d70024] > div[id]', timeout=60000)

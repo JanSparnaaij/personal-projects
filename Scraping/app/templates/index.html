@@ -1,13 +1,24 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Eredivisie Match Results</h1>
+<h1>Match Results</h1>
+
+<form method="get" action="/">
+    <label for="league">Select League:</label>
+    <select id="league" name="league" onchange="this.form.submit()">
+        {% for league, url in leagues.items() %}
+        <option value="{{ league }}" {% if league == selected_league %}selected{% endif %}>
+            {{ league.replace('_', ' ').title() }}
+        </option>
+        {% endfor %}
+    </select>
+</form>
 
 <!-- Debugging Info -->
 {% if matches %}
-    <p>{{ matches|length }} matches found.</p>
+    <p>{{ matches|length }} matches found in {{ selected_league.replace('_', ' ').title() }}.</p>
 {% else %}
-    <p>No matches found!</p>
+    <p>No matches found in {{ selected_league.replace('_', ' ').title() }}.</p>
 {% endif %}
 
 <!-- Table for Match Results -->
@@ -24,18 +35,32 @@
     <tbody>
         {% for match in matches %}
         <tr>
-            <td>{{ match.home_team }}</td>
-            <td>{{ match.away_team }}</td>
-            <td>{{ match.odds.home }}</td>
-            <td>{{ match.odds.draw }}</td>
-            <td>{{ match.odds.away }}</td>
+            <!-- Highlight Home Team if Home Odd is Lowest -->
+            <td {% if match.odds.home <= match.odds.draw and match.odds.home <= match.odds.away %}class="highlight"{% endif %}>
+                {{ match.home_team }}
+            </td>
+
+            <!-- Highlight Away Team if Away Odd is Lowest -->
+            <td {% if match.odds.away <= match.odds.home and match.odds.away <= match.odds.draw %}class="highlight"{% endif %}>
+                {{ match.away_team }}
+            </td>
+
+            <!-- Home Odd -->
+            <td {% if match.odds.home <= match.odds.draw and match.odds.home <= match.odds.away %}class="highlight"{% endif %}>
+                {{ match.odds.home }}
+            </td>
+
+            <!-- Draw Odd -->
+            <td {% if match.odds.draw <= match.odds.home and match.odds.draw <= match.odds.away %}class="highlight"{% endif %}>
+                {{ match.odds.draw }}
+            </td>
+
+            <!-- Away Odd -->
+            <td {% if match.odds.away <= match.odds.home and match.odds.away <= match.odds.draw %}class="highlight"{% endif %}>
+                {{ match.odds.away }}
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
-<!-- Message if no matches -->
-{% if not matches %}
-<p>No matches available at this time. Please try again later.</p>
-{% endif %}
 {% endblock %}

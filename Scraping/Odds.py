@@ -84,7 +84,7 @@ def display_all_matches(matches):
         print("No match data available.")
 
 if __name__ == "__main__":
-    url = "https://www.oddsportal.com/football/england/premier-league/"
+    url = "https://www.oddsportal.com/soccer/netherlands/eredivisie/"
     print("Fetching all match details...")
     all_matches = fetch_all_matches(url)
 

@@ -24,3 +24,9 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
+/* Highlight style for the lowest odd */
+.highlight {
+    background-color: #d4edda; /* Light green background */
+    font-weight: bold; /* Bold text */
+}
