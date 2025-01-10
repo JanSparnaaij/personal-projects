@@ -30,3 +30,26 @@ th {
     background-color: #d4edda; /* Light green background */
     font-weight: bold; /* Bold text */
 }
+
+/* Buttons for selecting sports */
+.sport-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.sport-buttons .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50; /* Green */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sport-buttons .button:hover {
+    background-color: #45a049;
+}

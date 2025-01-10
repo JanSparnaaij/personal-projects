@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Match Results</h1>
+<h1>Football Odds</h1>
 
-<form method="get" action="/">
+<!-- Dropdown for Selecting League -->
+<form method="get" action="/football">
     <label for="league">Select League:</label>
     <select id="league" name="league" onchange="this.form.submit()">
         {% for league, url in leagues.items() %}
@@ -35,27 +36,18 @@
     <tbody>
         {% for match in matches %}
         <tr>
-            <!-- Highlight Home Team if Home Odd is Lowest -->
             <td {% if match.odds.home <= match.odds.draw and match.odds.home <= match.odds.away %}class="highlight"{% endif %}>
                 {{ match.home_team }}
             </td>
-
-            <!-- Highlight Away Team if Away Odd is Lowest -->
             <td {% if match.odds.away <= match.odds.home and match.odds.away <= match.odds.draw %}class="highlight"{% endif %}>
                 {{ match.away_team }}
             </td>
-
-            <!-- Home Odd -->
             <td {% if match.odds.home <= match.odds.draw and match.odds.home <= match.odds.away %}class="highlight"{% endif %}>
                 {{ match.odds.home }}
             </td>
-
-            <!-- Draw Odd -->
             <td {% if match.odds.draw <= match.odds.home and match.odds.draw <= match.odds.away %}class="highlight"{% endif %}>
                 {{ match.odds.draw }}
             </td>
-
-            <!-- Away Odd -->
             <td {% if match.odds.away <= match.odds.home and match.odds.away <= match.odds.draw %}class="highlight"{% endif %}>
                 {{ match.odds.away }}
             </td>
