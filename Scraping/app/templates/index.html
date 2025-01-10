@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Eredivisie Match Results</h1>
+
+<!-- Debugging Info -->
+{% if matches %}
+    <p>{{ matches|length }} matches found.</p>
+{% else %}
+    <p>No matches found!</p>
+{% endif %}
+
+<!-- Table for Match Results -->
+<table>
+    <thead>
+        <tr>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Home Odds</th>
+            <th>Draw Odds</th>
+            <th>Away Odds</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for match in matches %}
+        <tr>
+            <td>{{ match.home_team }}</td>
+            <td>{{ match.away_team }}</td>
+            <td>{{ match.odds.home }}</td>
+            <td>{{ match.odds.draw }}</td>
+            <td>{{ match.odds.away }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Message if no matches -->
+{% if not matches %}
+<p>No matches available at this time. Please try again later.</p>
+{% endif %}
+{% endblock %}
