@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Vibe Shop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="cart">
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="products.html">Vibe Shop</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false">Menu</button>
+      </div>
+      <nav class="nav-links" data-nav-links>
+        <a href="products.html" data-nav-page="products"><span class="nav-emoji" aria-hidden="true">🛍️</span><span class="nav-label">Products</span></a>
+        <a href="shopping-cart.html" data-nav-page="cart"><span class="nav-emoji" aria-hidden="true">🧺</span><span class="nav-label">ShoppingCart</span></a>
+        <a href="checkout.html" data-nav-page="checkout"><span class="nav-emoji" aria-hidden="true">💳</span><span class="nav-label">Checkout</span></a>
+        <a href="shopping-cart.html" class="cart-link" data-cart-count><span class="nav-emoji" aria-hidden="true">🛒</span><span class="nav-label" data-cart-count-text>Cart (0)</span><span class="cart-badge" data-cart-badge hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h1 class="page-title">Shopping Cart</h1>
+
+      <div id="cart-empty" class="empty-state" hidden>
+        <p>Your cart is empty.</p>
+        <a class="button" href="products.html">Go to Products</a>
+      </div>
+
+      <div id="cart-table-wrap" class="panel table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Line Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-table-body"></tbody>
+        </table>
+
+        <div class="cart-summary">
+          <p><strong>Subtotal:</strong> <span id="cart-subtotal">$0.00</span></p>
+          <div class="button-row">
+            <a class="button button-secondary" href="products.html">Continue Shopping</a>
+            <a class="button" href="checkout.html">Proceed to Checkout</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

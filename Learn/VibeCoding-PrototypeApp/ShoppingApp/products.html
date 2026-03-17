@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Vibe Shop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="products">
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="products.html">Vibe Shop</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false">Menu</button>
+      </div>
+      <nav class="nav-links" data-nav-links>
+        <a href="products.html" data-nav-page="products"><span class="nav-emoji" aria-hidden="true">🛍️</span><span class="nav-label">Products</span></a>
+        <a href="shopping-cart.html" data-nav-page="cart"><span class="nav-emoji" aria-hidden="true">🧺</span><span class="nav-label">ShoppingCart</span></a>
+        <a href="checkout.html" data-nav-page="checkout"><span class="nav-emoji" aria-hidden="true">💳</span><span class="nav-label">Checkout</span></a>
+        <a href="shopping-cart.html" class="cart-link" data-cart-count><span class="nav-emoji" aria-hidden="true">🛒</span><span class="nav-label" data-cart-count-text>Cart (0)</span><span class="cart-badge" data-cart-badge hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h1 class="page-title">Products</h1>
+      <p class="page-subtitle">Browse available items.</p>
+
+      <div id="products-empty" class="empty-state" hidden>
+        <p>No products available right now.</p>
+        <a class="button" href="products.html">Back to Products</a>
+      </div>
+
+      <div id="product-list" class="card-grid"></div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Vibe Shop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="products">
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="products.html">Vibe Shop</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false">Menu</button>
+      </div>
+      <nav class="nav-links" data-nav-links>
+        <a href="products.html" data-nav-page="products"><span class="nav-emoji" aria-hidden="true">🛍️</span><span class="nav-label">Products</span></a>
+        <a href="shopping-cart.html" data-nav-page="cart"><span class="nav-emoji" aria-hidden="true">🧺</span><span class="nav-label">ShoppingCart</span></a>
+        <a href="checkout.html" data-nav-page="checkout"><span class="nav-emoji" aria-hidden="true">💳</span><span class="nav-label">Checkout</span></a>
+        <a href="shopping-cart.html" class="cart-link" data-cart-count><span class="nav-emoji" aria-hidden="true">🛒</span><span class="nav-label" data-cart-count-text>Cart (0)</span><span class="cart-badge" data-cart-badge hidden>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <p><a href="products.html">Back to Products</a></p>
+
+      <div id="product-details-content" class="panel">
+        <div class="detail-layout">
+          <div class="detail-image" aria-hidden="true">Image</div>
+          <div class="detail-meta">
+            <h1 id="product-name" class="page-title"></h1>
+            <p><strong>Price:</strong> <span id="product-price"></span></p>
+            <p><strong>Category:</strong> <span id="product-category"></span></p>
+            <p><strong>Description:</strong> <span id="product-description"></span></p>
+            <div class="button-row">
+              <button id="add-to-cart" type="button">Add to Cart</button>
+              <a class="button button-secondary" href="shopping-cart.html">Go to Cart</a>
+            </div>
+            <p id="add-status" class="notice" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="product-missing" class="empty-state" hidden>
+        <p>Product not found.</p>
+        <a class="button" href="products.html">Return to Products</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/product-details.js"></script>
+</body>
+</html>
