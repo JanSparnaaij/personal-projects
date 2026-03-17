@@ -16,15 +16,10 @@ public class JsonLoanRepository : ILoanRepository
     {
         await _jsonData.EnsureDataLoaded();
 
-        foreach (Loan loan in _jsonData.Loans!)
-        {
-            if (loan.Id == id)
-            {
-                Loan populated = _jsonData.GetPopulatedLoan(loan);
-                return populated;
-            }
-        }
-        return null;
+        return _jsonData.Loans!
+            .Where(loan => loan.Id == id)
+            .Select(loan => _jsonData.GetPopulatedLoan(loan))
+            .FirstOrDefault();
     }
 
     public async Task UpdateLoan(Loan loan)

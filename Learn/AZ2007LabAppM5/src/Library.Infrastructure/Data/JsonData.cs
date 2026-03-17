@@ -97,25 +97,18 @@ public class JsonData
 
     public Patron GetPopulatedPatron(Patron p)
     {
-        Patron populated = new Patron
+        return new Patron
         {
             Id = p.Id,
             Name = p.Name,
             ImageName = p.ImageName,
             MembershipStart = p.MembershipStart,
             MembershipEnd = p.MembershipEnd,
-            Loans = new List<Loan>()
+            Loans = Loans!
+                .Where(loan => loan.PatronId == p.Id)
+                .Select(loan => GetPopulatedLoan(loan))
+                .ToList()
         };
-
-        foreach (Loan loan in Loans!)
-        {
-            if (loan.PatronId == p.Id)
-            {
-                populated.Loans.Add(GetPopulatedLoan(loan));
-            }
-        }
-
-        return populated;
     }
 
     public Loan GetPopulatedLoan(Loan l)
